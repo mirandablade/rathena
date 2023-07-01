@@ -106,7 +106,7 @@ prontera,142,227,5	script	Vote Manager	62,{
 			mes .@n$;
 			mes "Deal completed.";
 			mes "You now have ^ff0000"+ .vp +"^000000 Vote Points.";
-			emotion e_cash;
+			emotion et_money;
 		}
 		set .@cost,0;
 		deletearray @bought_nameid[0], getarraysize(@bought_nameid);
