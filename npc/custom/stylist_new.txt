@@ -1,0 +1,92 @@
+prontera,170,180,1	script	Stylist#custom_stylist	122,{
+	mes "[^FF8000Stylist^000000]";
+	mes "I'm the greatest stylist in all of Rune-Midgard~~!";
+	mes "I can change your hair style or color!";
+	mes "What do you wish to change?";
+	if (		Class == 4251	||
+			Class == 4252	||
+			Class == 4254	||
+			Class == 4255	||
+			Class == 4256	||
+			Class == 4257	||
+			Class == 4258	||
+			Class == 4259	||
+			Class == 4260	||
+			Class == 4261	||
+			Class == 4262	||
+			Class == 4263	||
+			Class == 4264	||
+			Class == 4218	||
+			Class == 4220) {
+		setarray .@Styles[1],
+			7,
+			7,
+			7;
+		setarray .@Look[1],
+			LOOK_CLOTHES_COLOR,
+			LOOK_HAIR,
+			LOOK_HAIR_COLOR;
+		set .@s, select(" ~ Cloth color: ~ Hairstyle: ~ Hair color");
+		set .@Revert, getlook(.@Look[.@s]);
+		set .@Style,.@Revert;
+	} else {
+		setarray .@Styles[1],
+			getbattleflag("max_cloth_color"),
+			getbattleflag("max_hair_style"),
+			getbattleflag("max_hair_color");
+		setarray .@Look[1],
+			LOOK_CLOTHES_COLOR,
+			LOOK_HAIR,
+			LOOK_HAIR_COLOR;
+		set .@s, select(" ~ Cloth color: ~ Hairstyle: ~ Hair color");
+		set .@Revert, getlook(.@Look[.@s]);
+		set .@Style,.@Revert;
+	}
+	while(1) {
+		if (.@s == 3) {
+			setlook .@Look[.@s], .@Style;
+			message strcharinfo(0),"This is style #"+.@Style+".";
+			set .@menu$, " ~ Next (^0055FF"+((.@Style!=.@Styles[.@s])?.@Style+1:0)+"^000000): ~ Previous (^0055FF"+((.@Style!=0)?.@Style-1:.@Styles[.@s])+"^000000): ~ Jump to...: ~ Revert to original (^0055FF"+.@Revert+"^000000)";
+			switch(select(.@menu$)) {
+			case 1:
+				set .@Style, ((.@Style != .@Styles[.@s]) ? .@Style+1 : 0);
+				break;
+			case 2:
+				set .@Style, ((.@Style != 0) ? .@Style-1 : .@Styles[.@s]);
+				break;
+			case 3:
+				message strcharinfo(0),"Choose a style between 0 - "+.@Styles[.@s]+".";
+				input .@Style,0,.@Styles[.@s];
+				if (!.@Style)
+					set .@Style, rand(0,.@Styles[.@s]);
+				break;
+			case 4:
+				set .@Style, .@Revert;
+				setlook .@Look[.@s], .@Revert;
+				break;
+			}
+		} else {
+			setlook .@Look[.@s], .@Style;
+			message strcharinfo(0),"This is style #"+.@Style+".";
+			set .@menu$, " ~ Next (^0055FF"+((.@Style!=.@Styles[.@s])?.@Style+1:1)+"^000000): ~ Previous (^0055FF"+((.@Style!=1)?.@Style-1:.@Styles[.@s])+"^000000): ~ Jump to...: ~ Revert to original (^0055FF"+.@Revert+"^000000)";
+			switch(select(.@menu$)) {
+			case 1:
+				set .@Style, ((.@Style != .@Styles[.@s]) ? .@Style+1 : 1);
+				break;
+			case 2:
+				set .@Style, ((.@Style != 1) ? .@Style-1 : .@Styles[.@s]);
+				break;
+			case 3:
+				message strcharinfo(0),"Choose a style between 1 - "+.@Styles[.@s]+".";
+				input .@Style,0,.@Styles[.@s];
+				if (!.@Style)
+					set .@Style, rand(1,.@Styles[.@s]);
+				break;
+			case 4:
+				set .@Style, .@Revert;
+				setlook .@Look[.@s], .@Revert;
+				break;
+			}			
+		}
+	}
+}

@@ -1,0 +1,29 @@
+alberta,45,251,5	script	Greedy Poring	909,{
+mes "[^FF8000The Greedy Poring^000000]";
+    if (countitem(909) >= 100) {
+        mes "Oh, I can see you have all the materials I was wishing for.";
+        mes "So, you want it??";
+        next;
+        switch(select("Yes, let's give it to me", "No, thanks")) {
+            case 1: {
+                if (countitem(909) >= 100) {
+                    delitem 909, 100;
+                    getitem 2829, 1;
+                    mes "There you are... Have fun!";
+                } else {
+                    mes "You don't have enough Jellopy.";
+                }
+                close;
+            }
+            case 2: {
+                mes "Ok... Then go away. C yaa!";
+                close;
+            }
+        }
+    } else {
+        mes "Hello, my friend! I have something for you greedy little people.";
+        mes "Bring me at least 100 pieces of Jellopy.";
+	close;
+    }
+}
+
