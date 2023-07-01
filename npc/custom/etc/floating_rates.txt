@@ -23,9 +23,27 @@ OnHour06:
 OnHour12:
 OnHour18:
 //-------------------
-	set $@brate,rand(100,150);
-	set $@jrate,rand(100,150);
-	set $@drate,rand(100,150);
+
+	set $@brate, 200;
+	set $@jrate, 200;
+	set $@drate, 100;
+	
+	// Get the current day of the week (0 for Sunday, 6 for Saturday)
+	$day=gettime(DT_DAYOFWEEK);
+	
+	// Check if it's a weekday (Monday to Friday)
+	if ($day >= 1 && $day <= 5) {
+		set $@brate, 200;
+		set $@jrate, 200;
+		set $@drate, 100;
+	}
+	else {
+		// It's the weekend (Saturday and Sunday), adjust rates randomly
+		set $@brate, rand(250, 299);
+		set $@jrate, rand(250, 299);
+		set $@drate, rand(100, 199);
+	}
+
 	//Base exp
 	setbattleflag("base_exp_rate",$@brate);
 	//Job exp
@@ -37,6 +55,6 @@ OnHour18:
 	setbattleflag("item_rate_equip",$@drate,true); // Apply new rates to configs set above
 	//we don't change card drops rate, because these values won't change them anyway
 	
-	announce "Current rates are: 1."+($@brate-100)+"x 1."+($@jrate-100)+"x 1."+($@drate-100)+"x",bc_all,0xFF6060;
+	announce "Current rates are: 2."+($@brate-100)+"x 2."+($@jrate-100)+"x 1."+($@drate-100)+"x",bc_all,0xFF6060;
 	end;
 }
