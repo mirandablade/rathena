@@ -1,2 +1,7 @@
 // Internal default is limited to 128 lines.  If you need more, you will need to modify the MOTD_LINE_SIZE definition in pc.cpp
-Welcome to rAthena! Enjoy! Please report any bugs you find.
+W e l c o m e    t o    O d i n R O ! ^_^ 
+You can use several commands on our server, just type: @commands
+Global channels: #global #support #trade #map #ally
+Rates on weekdays (fix): 2x/2x/1x
+Rates on weekends (floating): 2-3x/2-3x/1-2x
+Capital city is Prontera!
