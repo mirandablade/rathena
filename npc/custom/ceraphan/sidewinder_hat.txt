@@ -1,0 +1,47 @@
+morocc,183,95,5	script	Snake Hat	1424,{
+
+	mes "[^FF8000The Serpentine^000000]";	
+	mes "Hey, Mortal!!! Over here! The serpent....don't worry I won't devour you.";
+	next;
+	mes "[^FF8000The Serpentine^000000]";	
+    	mes "Do you want the power of the offspring of the world serpent? That quick attack twice before you blink?";
+	next;
+	mes "[^FF8000The Serpentine^000000]";	
+    	mes "Then bring me 2000 Snake scales of the descendants and 1,500,000 Zeny.";
+
+    if (countitem(926) >= 2000 && Zeny >= 1500000) {
+        next;
+        switch(select("I did what you have requested from me", "Sorry, I don't care!")) {
+            case 1:
+                if (countitem(926) >= 2000 && Zeny >= 1500000) {
+		mes "[^FF8000The Serpentine^000000]";	
+                    mes "Gullible man, thank you for your gold and your services,";
+		next;
+	mes "[^FF8000The Serpentine^000000]";	
+                    mes "Loki, the god of wind and swindle, fell for me laughs mockingly but a god keeps his word, take this!";
+                    delitem 926, 2000;
+                    set Zeny, Zeny - 1500000;
+                    getitem 5388, 1;
+		next;
+		mes "[^FF8000The Serpentine^000000]";	
+                    mes "Congratulations! You have received the Snake Hat!";
+                    close2;
+                } else {
+		mes "[^FF8000The Serpentine^000000]";	
+                    mes "You don't have enough Snake scales or Zeny.";
+                    close;
+                }
+                break;
+            case 2:
+		mes "[^FF8000The Serpentine^000000]";	
+                mes "Ok, See ya.";
+                close;
+                break;
+        }
+    } else {
+	next;
+	mes "[^FF8000The Serpentine^000000]";	
+        mes "You don't have enough Snake scales or Zeny.";
+        close;
+    }
+}
