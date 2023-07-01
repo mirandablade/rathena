@@ -1,0 +1,47 @@
+morocc,185,94,2	script	Peco Peco Hairband	840,{
+  	mes "[^FF8000Peco Peco Hairband^000000]";	
+	mes "Young Adventurer! Are you also here to meditate?";
+	next;
+	mes "[^FF8000Peco Peco Hairband^000000]";
+	mes "No..oh the youth has no time.. so impetuous.";
+	next;
+	mes "[^FF8000Peco Peco Hairband^000000]";
+	mes "Like, why am I meditating here?"; 
+	mes "To become one with the majestic Peco Pecos and to learn their secret agility. I would help you too but I see you don't have the time to sit in one place for 30 years..";
+	next;
+	mes "[^FF8000Peco Peco Hairband^000000]";
+	mes "Hmmm.. I have an idea.... prove yourself in the fight against the Grand Peco Pecos, but only KO them and bring me proof of your deeds 2000 Miscellaneous Feathers and 1,500,000 zeny";
+
+    if (countitem(7101) >= 2000 && Zeny >= 1500000) {
+        next;
+        switch(select("I did what you have requested from me", "Sorry, I don't care!")) {
+            case 1:
+                if (countitem(7101) >= 2000 && Zeny >= 1500000) {
+		mes "[^FF8000Peco Peco Hairband^000000]";	
+		mes "All right, you seem almost as quick as the Peco Pecos at first, but this magic item will make you even quicker!";
+                    delitem 7101, 2000;
+                    set Zeny, Zeny - 1500000;
+                    getitem 5286, 1;
+		next;
+		mes "[^FF8000Peco Peco Hairband^000000]";	
+                    mes "Congratulations! You have received the Peco Peco Hairband!";
+                    close2;
+                } else {
+		mes "[^FF8000Peco Peco Hairband^000000]";	
+                    mes "You don't have enough Miscellaneous Feathers or Zeny.";
+                    close;
+                }
+                break;
+            case 2:
+		mes "[^FF8000Peco Peco Hairband^000000]";	
+                mes "Ok, See ya.";
+                close;
+                break;
+        }
+    } else {
+	next;
+	mes "[^FF8000Peco Peco Hairband^000000]";	
+        mes "You don't have enough Miscellaneous Feathers or Zeny.";
+        close;
+    }
+}

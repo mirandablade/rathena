@@ -1,0 +1,60 @@
+morocc,188,93,5	script	Rideword Hat	404,{
+    mes "[^FF8000Rideword Hat^000000]";
+    mes "OhhoHoHo, What my old eyes see, a talented soul..";
+    mes "I see it in your eyes that you are burning to conquer the world with your exploits";
+	next;
+	mes "[^FF8000Rideword Hat^000000]";
+    mes "So that the bards will take your story to all cities.";
+    next;
+    
+    mes "[^FF8000Rideword Hat^000000]";
+    mes "HoHohoHo, I can help you, my young friend.";
+    mes "You see all those flying books? They are full of ancient magic.";
+	next;
+	mes "[^FF8000Rideword Hat^000000]";
+    mes "Bring me their insides, 2000 pages and 1,500,000 Zeny.";
+    
+    if (countitem(1097) >= 2000 && Zeny >= 1500000) {
+        next;
+        switch(select("I did what you have requested from me", "Sorry, I don't care!")) {
+            case 1:
+                if (countitem(1097) >= 2000 && Zeny >= 1500000) {
+                    mes "[^FF8000Rideword Hat^000000]";
+                    mes "Ohooo I see you're serious.";
+                    mes "At the price the weak-willed mostly leave it...";
+                    mes "Then I'll show you my true form.";
+			next;
+		setnpcdisplay "Rideword Hat", 414;
+		specialeffect 8;
+		sleep2 1000;
+		setnpcdisplay "Rideword Hat", 404;
+                    mes "[^FF8000Rideword Hat^000000]";
+                    mes "Odin personally honors you.";
+                    mes "This stays between us, and take this artifact with the power of ancient magic.";
+                    mes "May it help you on your way!";
+                    delitem 1097, 2000;
+                    set Zeny, Zeny - 1500000;
+                    getitem 5208, 1;
+                    next;
+                    mes "[^FF8000Rideword Hat^000000]";
+                    mes "Congratulations! You have received the Rideword Hat!";
+                    close2;
+                } else {
+                    mes "[^FF8000Rideword Hat^000000]";
+                    mes "You don't have enough papers or Zeny.";
+                    close;
+                }
+                break;
+            case 2:
+                mes "[^FF8000Rideword Hat^000000]";
+                mes "Ok, See ya.";
+                close;
+                break;
+        }
+    } else {
+	next;
+        mes "[^FF8000Rideword Hat^000000]";
+        mes "You don't have enough papers or Zeny.";
+        close;
+    }
+}
